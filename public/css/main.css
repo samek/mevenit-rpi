@@ -1,0 +1,252 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+html {
+	background-color: #fff;
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #546979;
+	background-color: transparent;
+	-webkit-font-smoothing: antialiased;
+	line-height: 1.42857143;
+}
+*:focus {
+	outline: 0 !important;
+}
+.btn {
+	-webkit-transition:	all 0.1s ease-in-out;
+	-moz-transition:	all 0.1s ease-in-out;
+	-o-transition:		all 0.1s ease-in-out;
+	transition:			all 0.1s ease-in-out;
+}
+.site-header {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	padding: 20px 30px;
+}
+.site-header h1 {
+	margin: 0;
+}
+.navbar-head {
+	background-color: #fff;
+	border: none;
+}
+.site-header:after,
+.navbar-head:after {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -6px;
+	height: 6px;
+	width: 100%;
+	content: "";
+	background-image: url(./../img/hr-gradient.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: 100% 6px;
+}
+.site-options {
+	position: absolute;
+	right: 30px;
+	bottom: 30px;
+}
+.site-credits {
+	position: absolute;
+	left: 30px;
+	bottom: 30px;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: 200;
+}
+
+.i-switch {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  border-radius: 30px;
+  background-color: #FF5500;
+  margin: 0;
+}
+.i-switch input {
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.i-switch input:checked + i:before {
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  right: 5px;
+  border-width: 0;
+  border-radius: 5px;
+}
+.i-switch input:checked + i:after {
+  margin-left: 16px;
+}
+.i-switch i:before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  background-color: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 30px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.i-switch i:after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 18px;
+  top: 1px;
+  bottom: 1px;
+  border-radius: 50%;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  -webkit-transition: margin-left 0.3s;
+  transition: margin-left 0.3s;
+}
+.i-switch-md {
+  width: 40px;
+  height: 24px;
+}
+.i-switch-md input:checked + i:after {
+  margin-left: 17px;
+}
+.i-switch-md i:after {
+  width: 22px;
+}
+.i-switch-lg {
+  width: 50px;
+  height: 30px;
+}
+.i-switch-lg input:checked + i:after {
+  margin-left: 21px;
+}
+.i-switch-lg i:after {
+  width: 28px;
+}
+.i-checks {
+  padding-left: 20px;
+  cursor: pointer;
+}
+.i-checks input {
+  opacity: 0;
+  position: absolute;
+  margin-left: -20px;
+}
+.i-checks input:checked + i {
+  border-color: #FF5500;
+}
+.i-checks input:checked + i:before {
+  left: 4px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  background-color: #FF5500;
+}
+.i-checks input:checked + span .active {
+  display: inherit;
+}
+.i-checks input[type="radio"] + i,
+.i-checks input[type="radio"] + i:before {
+  border-radius: 50%;
+}
+.i-checks input[disabled] + i,
+fieldset[disabled] .i-checks input + i {
+  border-color: #dee5e7;
+}
+.i-checks input[disabled] + i:before,
+fieldset[disabled] .i-checks input + i:before {
+  background-color: #dee5e7;
+}
+.i-checks > i {
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  border: 1px solid #cfdadd;
+  background-color: #fff;
+  margin-left: -20px;
+  margin-top: -2px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  position: relative;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.i-checks > i:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0px;
+  height: 0px;
+  background-color: transparent;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  
+  -webkit-border-radius: 1px;
+     -moz-border-radius: 1px;
+          border-radius: 1px;
+}
+.i-checks > span {
+  margin-left: -20px;
+}
+.i-checks > span .active {
+  display: none;
+}
+.i-checks-sm input:checked + i:before {
+  left: 3px;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+}
+.i-checks-sm > i {
+  width: 16px;
+  height: 16px;
+  margin-left: -18px;
+  margin-right: 6px;
+}
+.i-checks-lg input:checked + i:before {
+  left: 8px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+}
+.i-checks-lg > i {
+  width: 30px;
+  height: 30px;
+}
+
+
+
+.status-toggle {
+	position: relative;
+	float: right;
+	margin-right: 15px;
+	padding: 9px 10px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+
+
+
+

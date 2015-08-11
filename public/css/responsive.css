@@ -1,0 +1,63 @@
+/*html,
+body {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #58666e;
+	background-color: transparent;
+	-webkit-font-smoothing: antialiased;
+	line-height: 1.42857143;
+}
+*:focus {
+	outline: 0 !important;
+}
+
+
+
+body > .container {
+    padding: 100px 15px 120px;
+}*/
+
+
+@media (max-width: 1600px) {
+	
+}
+@media (max-width: 1200px) {
+	
+}
+@media (max-width: 992px) {
+	.device-options .pull-left,
+	.device-options .pull-right {
+		float: none !important;
+		text-align: center;
+	}
+	.device-options a {
+		width: 40%;
+		margin: 5px;
+	}
+}
+@media (max-width: 768px) {
+	body > .container {
+    	padding: 135px 15px 120px;
+	}
+}
+@media (min-width: 768px) {
+	
+}
+@media (min-width: 1200px) {
+	
+}
+@media (min-width: 992px) {
+	.device-options h4 {
+		line-height: 34px;
+	}
+	.device-options a {
+		margin-left: 10px;
+	}
+}
+@media (min-width: 1600px) {
+	
+}

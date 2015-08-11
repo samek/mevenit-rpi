@@ -1,0 +1,12 @@
+@import "../assets/bootstrap/css/bootstrap.css";
+@import "../assets/simple-line-icons-master/css/simple-line-icons.css";
+@import "../assets/font-awesome/css/font-awesome.css";
+@import "sticky-footer-navbar.css";
+
+@import "default.css";
+@import "main.css";
+
+@import "responsive.css";
+
+
+
