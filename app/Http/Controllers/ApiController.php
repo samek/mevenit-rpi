@@ -36,6 +36,7 @@ abstract class ApiController extends Controller {
 
     protected function respondWithData($data)
     {
+
         $response = isset($data['data']) ? $data : ['data' => $data];
 
         return $this->respond($response);

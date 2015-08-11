@@ -18,8 +18,9 @@ class pingHelper {
     {
         if (!$dest)
             $dest="google.com";
-        $this->state = shell_exec("/usr/bin/fping ".$dest);
-
+        //TEMP REMOVE NETWORK PROBLEM REMOVE ME
+        //$this->state = shell_exec("/usr/bin/fping ".$dest);
+        $this->state = "alive";
 
     }
     public  function isOnline() {

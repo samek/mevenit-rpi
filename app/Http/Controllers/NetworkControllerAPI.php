@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class WifiController extends Controller
+class NetworkControllerAPI extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +17,10 @@ class WifiController extends Controller
     public function index()
     {
         //
+    }
+
+    public function reset() {
+
     }
 
     /**

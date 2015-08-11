@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Repositories\DeviceRepository;
 
-class JumpController extends Controller
+class DeviceControllerAPI extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +16,11 @@ class JumpController extends Controller
      */
     public function index()
     {
-        $devicerepo = new DeviceRepository();
-
-        return redirect::away($devicerepo->readyToServe());
+        //
     }
 
+    public function reset() {
+
+    }
 
 }
