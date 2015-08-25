@@ -111,7 +111,12 @@ class WifiNetworks extends Command
             $wdata = wifi_data::where('key','=','networks')->first();
 
         }
+        //dd($wdata);
+
+
+
         $wdata->value=$json;
+
         $wdata->save();
 
 

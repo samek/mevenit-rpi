@@ -26,7 +26,6 @@ class SettingsControllerAPI extends ApiController
         $settingsRepo = new SettingsRepository();
 
         $out = $settingsRepo->allArray();
-
         return $this->respondWithData($out);
     }
 }

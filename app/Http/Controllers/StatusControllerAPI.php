@@ -35,6 +35,7 @@ class StatusControllerAPI extends ApiController
     public function online() {
         $statusRepo = new StatusRepository();
         $out = $statusRepo->getStatusOnline();
+        $out["connected"]=2;
         return $this->respondWithData($out);
     }
 

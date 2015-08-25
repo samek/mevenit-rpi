@@ -8,5 +8,7 @@ class wifi_data extends Model
 {
     protected $table = 'wifi_data';
     public  $timestamps = false;
+    protected $fillable = array('key', 'value');
+    protected $primaryKey = 'key';
 
 }

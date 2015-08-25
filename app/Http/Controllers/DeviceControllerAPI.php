@@ -14,13 +14,31 @@ class DeviceControllerAPI extends ApiController
      *
      * @return Response
      */
-    public function index()
-    {
-        //
+
+
+
+
+    public function reboot() {
+        $msg=array('job'=>"queued");
+        return  $this->respondWithData($msg);
+
+    }
+    public function update() {
+        $msg=array('job'=>"queued");
+        return $this->respondWithData($msg);
+
+    }
+    public function resetNetwork() {
+        $msg=array('job'=>"queued");
+        return $this->respondWithData($msg);
+
+    }
+    public function factoryReset() {
+        $msg=array('job'=>"queued");
+        return $this->respondWithData($msg);
+
     }
 
-    public function reset() {
 
-    }
 
 }

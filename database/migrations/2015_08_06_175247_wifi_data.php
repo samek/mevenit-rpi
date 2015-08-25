@@ -16,7 +16,7 @@ class WifiData extends Migration
         Schema::create('wifi_data', function(Blueprint $table)
         {
 
-            $table->string('key')->unique();
+            $table->string('key')->primary();
             $table->text('value');
         });
     }

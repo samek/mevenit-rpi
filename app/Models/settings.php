@@ -9,4 +9,5 @@ class settings extends Model
     protected $table = 'settings';
     public  $timestamps = false;
     protected $fillable = array('key', 'value');
+    protected $primaryKey = 'key';
 }

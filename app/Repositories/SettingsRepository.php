@@ -63,4 +63,18 @@ class SettingsRepository {
         }
         return $out;
     }
+
+    public function getPairDataSettings() {
+        $keys = array('deviceId','code','slideshowUrl');
+
+        $out = array();
+        foreach ($keys as $key) {
+            $k = $this->get($key);
+            if ($k!=null) {
+                $out[$k->key]= $k->val;
+            }
+
+        }
+        return $out;
+    }
 }
