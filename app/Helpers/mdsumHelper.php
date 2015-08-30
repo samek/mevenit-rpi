@@ -14,7 +14,7 @@ class mdsumHelper {
     private $settingsrepo="";
     private $file="";
 
-    function __construct($file="/etc/network/interfaces")
+    function __construct($file="/etc/network/interfaces.default")
     {
 
         $this->file=$file;

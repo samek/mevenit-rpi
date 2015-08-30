@@ -79,14 +79,14 @@ class DeviceRepository {
     public function checkHash() {
         $out=array();
         $md5sum = new mdsumHelper();
-        $out["/etc/network/interfaces"] = $md5sum->setFile("/etc/network/interfaces")->check();
+        $out["/etc/network/interfaces.default"] = $md5sum->setFile("/etc/network/interfaces.default")->check();
         $out["/etc/wpa_supplicant/wpa_supplicant.conf"] = $md5sum->setFile("/etc/wpa_supplicant/wpa_supplicant.conf")->check();
         return $out;
     }
 
     public function setHash() {
         $md5sum = new mdsumHelper();
-        $md5sum->setFile("/etc/network/interfaces")->update();
+        $md5sum->setFile("/etc/network/interfaces.default")->update();
         $md5sum->setFile("/etc/wpa_supplicant/wpa_supplicant.conf")->update();
         return true;
     }
