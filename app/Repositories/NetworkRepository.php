@@ -16,7 +16,26 @@ use App\Models\network_data;
 class NetworkRepository {
 
 
+
+    public function updateIface(array $attributes = []) {
+        $ret = $this->get($attributes["dev"]);
+
+        if ($ret!=null) {
+            foreach ($attributes as $key => $val) {
+                $ret->$key = $val;
+            }
+            //dd($ret);
+            $ret->save();
+            return $ret;
+        } else {
+            return $this->create($attributes);
+        }
+
+    }
+
+
     public function create(array $attributes = []) {
+
         return network_data::create($attributes);
 
     }
@@ -30,16 +49,23 @@ class NetworkRepository {
         $ret = network_data::where('dev','=',$iface)->first();
         //If null just insert it in empty//
         if ($ret == null )
-            return $this->_create($iface);
+            return $this->_createDefault($iface);
         else
             return $ret;
 
     }
 
 
-    private function _create($iface) {
+    public function setDefault($iface) {
+        $if = $this->get($iface);
+        $if->delete(); // empty and setup it up again//
+        $if = $this->get($iface);
+    }
+
+    private function _createDefault($iface) {
         $vars=array(
-            'dev' =>$iface
+            'dev' =>$iface,
+            'dhcp'=>'1',
         );
         return $this->create($vars);
     }

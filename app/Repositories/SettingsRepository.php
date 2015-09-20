@@ -19,6 +19,29 @@ class SettingsRepository {
      * @param $val
      * @return mixed
      */
+
+    public function insertSettings($array) {
+
+        foreach ($array as $key=>$val) {
+            unset($attr);
+            if (!isset($val) or !isset($key))
+                continue;
+            if (is_object($val))
+                continue;
+            if (trim($val)=="" or trim($key)=="")
+                continue;
+            $attr["key"]   = $key;
+            $attr["value"] = $val;
+            $cVal = $this->get($key);
+            if ($cVal!=null) {
+                //we update it//
+                $this->update($cVal,$attr);
+            } else {
+                $this->create($attr);
+            }
+        }
+    }
+
     public function get($val)
     {
         return settings::where('key','=',$val)->first();
@@ -31,6 +54,7 @@ class SettingsRepository {
      */
     public function create(array $attributes = [])
     {
+        //dd($attributes);
         return settings::create($attributes);
     }
 

@@ -29,6 +29,11 @@ class Reboot extends Job implements SelfHandling, ShouldQueue
      */
     public function handle()
     {
-        echo "AAAAA" .shell_exec("/sbin/reboot");
+        //If this is not called then it loops for ever...
+        $this->delete();
+
+        shell_exec("/sbin/reboot");
     }
+
+
 }

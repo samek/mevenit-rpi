@@ -24,8 +24,12 @@ Route::get('/api/device/resetnetwork', 'DeviceControllerAPI@resetNetwork');
 Route::get('/api/device/factoryreset', 'DeviceControllerAPI@factoryReset');
 Route::get('/api/device/update', 'DeviceControllerAPI@update');
 
+///Pair//
 
+Route::get('/api/pair', 'PairControllerAPI@index');
 
+//Network setup//
+Route::any('/api/network/setup/', 'NetworkControllerAPI@store');
 
 
 

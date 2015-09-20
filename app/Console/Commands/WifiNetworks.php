@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+
 use App\Models\wifi_data;
 
 
@@ -41,6 +42,9 @@ class WifiNetworks extends Command
      */
     public function handle()
     {
+
+
+
         $output=array();
         //Inf loop of scanning//
         $iw = shell_exec('iwlist wlan0 scan');

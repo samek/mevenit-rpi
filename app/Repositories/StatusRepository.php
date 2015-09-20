@@ -57,13 +57,13 @@ class StatusRepository {
     public function getStatusAll() {
     $out = array();
 
-        $out['network']['interfaces.default']['settings']['eth0'] = $this->_getIfaceStatus("eth0");
-        $out['network']['interfaces.default']['settings']['wlan0'] = $this->_getIfaceStatus("wlan0");
+        $out['network']['interfaces_default']['settings']['eth0'] = $this->_getIfaceStatus("eth0");
+        $out['network']['interfaces_default']['settings']['wlan0'] = $this->_getIfaceStatus("wlan0");
 
         $this->interfaceHelper->setIface("eth0");
-        $out['network']['interfaces.default']['state']['eth0'] = $this->interfaceHelper->getIp();
+        $out['network']['interfaces_default']['state']['eth0'] = $this->interfaceHelper->getIp();
         $this->interfaceHelper->setIface('wlan0');
-        $out['network']['interfaces.default']['state']['wlan0'] = $this->interfaceHelper->getIp();
+        $out['network']['interfaces_default']['state']['wlan0'] = $this->interfaceHelper->getIp();
 
 
         $out['connected'] = $this->_getOnlineStatus();

@@ -18,14 +18,3 @@ iface wlan1 inet dhcp
 wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 
-auto bond0
-iface bond0 inet static
-    	bond-miimon 100
-    	bond-mode 6
-    	bond-primary-reselect 2
-    	bond-slaves none
-    	address 10.0.0.48
-    	netmask 255.255.255.0
-    	up route add -net 10.0.0.0/8 gw 10.0.0.10 dev bond0
-    dns-nameservers 88.86.114.150 91.202.65.240
-
