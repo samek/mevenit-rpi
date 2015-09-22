@@ -17,6 +17,8 @@ class WifiNetworks extends Command
      */
     protected $signature = 'WifiNetworks:scan';
 
+
+
     /**
      * The console command description.
      *
@@ -49,7 +51,7 @@ class WifiNetworks extends Command
         //Inf loop of scanning//
         $iw = shell_exec('iwlist wlan0 scan');
         if (strlen($iw)<30) {
-            echo "skipping";
+            echo "-";
             exit(1);
         }
         ///We should have the output ...//
@@ -125,7 +127,7 @@ class WifiNetworks extends Command
 
 
         //print_r($output);
-        echo  json_encode($output);
+        echo  "+";
 
     }
 }

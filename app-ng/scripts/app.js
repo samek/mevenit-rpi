@@ -44,6 +44,11 @@ var MevenBoxApp = angular
         controller: 'InfoCtrl',
         controllerAs: 'info'
       })
+      .when('/jump', {
+          templateUrl: '../views/jump.html',
+          controller: 'jumpCtrl',
+          controllerAs: 'jump'
+        })
       .otherwise({
         redirectTo: '/'
       });

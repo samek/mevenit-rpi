@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\DeviceRepository;
 
-class JumpControllerAPI extends Controller
+class JumpControllerAPI extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,8 @@ class JumpControllerAPI extends Controller
     {
         $devicerepo = new DeviceRepository();
 
-        return redirect::away($devicerepo->readyToServe());
+
+        return $this->respondWithData(array("jumpUrl"=>$devicerepo->readyToServe()));
     }
 
 

@@ -2,12 +2,20 @@
 
 namespace App\Jobs;
 
-use App\Jobs\Job;
-use Illuminate\Contracts\Bus\SelfHandling;
+
+
 use App\Helpers\InterfacesHelper;
 
-class factoryReset extends Job implements SelfHandling
+use App\Jobs\Job;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class factoryReset extends Job implements SelfHandling, ShouldQueue
 {
+    use InteractsWithQueue, SerializesModels;
+
     /**
      * Create a new job instance.
      *
@@ -31,6 +39,9 @@ class factoryReset extends Job implements SelfHandling
         //Delete Database//
         \Artisan::call('migrate:refresh');
         //Reboot
+        $this->delete();
+
+        shell_exec("/sbin/reboot");
 
     }
 }

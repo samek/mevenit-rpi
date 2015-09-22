@@ -17,9 +17,9 @@ class pingHelper {
     function __construct($dest=false)
     {
         if (!$dest)
-            $dest="google.com";
+             $dest="google.com";
         //TEMP REMOVE NETWORK PROBLEM REMOVE ME
-        //$this->state = shell_exec("/usr/bin/fping ".$dest);
+        $this->state = shell_exec("/usr/bin/fping ".$dest);
         $this->state = "alive";
 
     }

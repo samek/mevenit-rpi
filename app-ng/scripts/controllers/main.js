@@ -9,7 +9,8 @@
  */
 
 var mevenBoxControllers = angular.module('mevenBoxControllers', []);
-var hostname="http://10.0.1.3:8000";
+var hostname="http://"+location.host+":8000";
+//http://10.0.1.3:8000";
 //var hostname='http://private-38c7f8-mevenbox.apiary-mock.com';
 mevenBoxControllers.controller('MainCtrl', ['$scope', '$http','$interval','$location',
     function($scope, $http,$interval,$location) {
@@ -41,7 +42,7 @@ mevenBoxControllers.controller('MainCtrl', ['$scope', '$http','$interval','$loca
       }
 
       function updateDevice() {
-        $http.get(hostname+'/api/status/online').success(ActionData);
+        $http.get(hostname+'/api/device/update').success(ActionData);
       }
 
       function factoryReset() {
@@ -207,6 +208,35 @@ mevenBoxControllers.controller('ConnectCtrl', ['$scope', '$http','$interval','$w
 
     }
   ]
+);
+
+
+mevenBoxControllers.controller('jumpCtrl', ['$scope', '$http','$interval','$window',
+      function($scope, $http,$interval,$window) {
+
+        activate();
+
+        ////
+
+        function activate() {
+          getData();
+
+        }
+
+
+        function getData() {
+          $http.get(hostname+'/api/jump').success(dataLoaded);
+        }
+
+
+        function dataLoaded(data) {
+            $window.location.href=data.data.jumpUrl;
+
+        }
+
+
+      }
+    ]
 );
 
 

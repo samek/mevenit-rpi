@@ -14,6 +14,7 @@ use App\Helpers\pingHelper;
 use App\Helpers\InterfacesHelper;
 use App\Helpers\mdsumHelper;
 use App\Jobs\Reboot;
+use App\Jobs\update;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 /**
