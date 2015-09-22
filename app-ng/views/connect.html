@@ -1,0 +1,75 @@
+
+<nav class="navbar navbar-default navbar-fixed-top br-none">
+  <div class="navbar-header">
+    <a class="navbar-brand visible-xs" href="#">
+      <strong>CONNECT</strong> YOUR ACCOUNT
+    </a>
+  </div>
+  <div id="navbar" class="navbar-collapse">
+    <div class="navbar-head">
+      <div class="row">
+        <div class="col-sm-6 hidden-xs">
+          <h1 class="m-none"><strong>CONNECT</strong> YOUR ACCOUNT</h1>
+        </div>
+        <div   ng-switch="pair.status">
+
+          <div class="col-sm-6" ng-switch-when="-1">
+            <div class="text-center visible-xs">
+              <strong class="text-warning"><i class="icon-clock ml-10 mr-10"></i>Waiting for authentication</strong>
+            </div>
+            <div class="mt-5 text-right hidden-xs">
+              <span class="text-muted">Status:</span> <strong class="text-warning text-150"><i class="icon-clock ml-10 mr-10"></i>Waiting for authentication</strong>
+            </div>
+
+          </div>
+          <div class="col-sm-6" ng-switch-when="1">
+
+            <div class="text-center visible-xs">
+              <strong class="text-success"><i class="icon-clock ml-10 mr-10"></i>Ready!</strong>
+            </div>
+            <div class="mt-5 text-right hidden-xs">
+              <span class="text-muted">Status:</span> <strong class="text-success text-150"><i class="icon-clock ml-10 mr-10"></i>Ready!</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="mt-60 text-center">
+        <h2 class="text-scale">Your <strong>Authorization code</strong></h2>
+        <p>
+          Enter Your authorization code in Your account device connection.
+        </p>
+        <p class="text-400 text-primary visible-xs">
+          <strong>{{pair.code}}</strong>
+        </p>
+        <p class="text-700 text-primary hidden-xs">
+          <strong>{{pair.code}}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content clearfix">
+    <div class="pull-left mt-10">
+      <small class="text-muted block">
+        ©2015 <strong>MEVEN</strong>.IT
+      </small>
+    </div>
+    <div class="pull-right">
+      <a class="btn btn-default" href="/#/"><i class="fa fa-close mr-5"></i>CANCEL</a>
+    </div>
+  </div>
+</footer>
+
+

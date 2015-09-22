@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top br-none">
+  <div id="navbar" class=" navbar-collapse">
+    <div class="navbar-head">
+      <h1 class="m-none">DEVICE <strong>INFORMATION</strong></h1>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="mt-40">
+        <div ng-repeat="(key,value) in info ">
+
+
+          <div class="form-group">
+            <label for="" class="col-sm-4 control-label text-light">{{key}}</label>
+            <div class="col-sm-8 control-label text-left">
+              <label>{{value}}</label>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content clearfix">
+    <div class="pull-left hidden-xs">
+      <small class="text-muted block mt-20">
+        ©2015 <strong>meven</strong>.it
+      </small>
+    </div>
+    <div class="pull-right">
+      <a class="btn btn-default" href="#/"><i class="fa fa-close"></i>CANCEL</a>
+    </div>
+  </div>
+</footer>

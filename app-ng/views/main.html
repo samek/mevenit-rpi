@@ -1,0 +1,253 @@
+
+<nav class="navbar navbar-default navbar-fixed-top br-none">
+  <div class="navbar-header text-center">
+    <a class="navbar-brand visible-xs" href="#">
+      DEVICE <strong>SETUP</strong>
+    </a>
+  </div>
+  <div id="navbar" class=" navbar-collapse">
+    <div class="navbar-head">
+      <div class="row">
+        <div class="col-sm-5 hidden-xs">
+          <h1 class="m-none">DEVICE <strong>SETUP</strong></h1>
+        </div>
+        <div class="col-sm-7" ng-switch="status.connected">
+          <div ng-switch-when="2">
+            <div class="text-center visible-xs">
+              <strong class="text-success"><i class="icon-check ml-10 mr-10"></i>Internet connection detected</strong>
+            </div>
+            <div class="mt-5 text-right hidden-xs">
+              <span class="text-muted">Status:</span> <strong class="text-success text-150"><i class="icon-check ml-10 mr-10"></i>Internet connection detected</strong>
+            </div>
+          </div>
+
+          <div ng-switch-when="1">
+            <div class="text-center visible-xs">
+              <strong class="text-warning"><i class="fa fa-closeml-10 mr-10"></i>No Internet connection</strong>
+            </div>
+            <div class="mt-5 text-right hidden-xs">
+              <span class="text-muted">Status:</span> <strong class="text-warning text-150"><i class="fa fa-close ml-10 mr-10"></i>No Internet connection</strong>
+            </div>
+          </div>
+
+          <div ng-switch-when="3">
+            <div class="text-center visible-xs">
+              <strong class="text-success"><i class="icon-check ml-10 mr-10"></i>You are ready to go!</strong>
+            </div>
+            <div class="mt-5 text-right hidden-xs">
+              <span class="text-muted">Status:</span> <strong class="text-success text-150"><i class="icon-check ml-10 mr-10"></i>You are ready to go!</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- <div class="msg msg-default">
+  Hello world!
+</div>
+
+<div class="msg msg-alert">
+  <div class="row">
+    <div class="col-xs-8">
+      Hello world!
+    </div>
+    <div class="col-xs-4 text-right">
+      <a class="btn btn-white" href="#">Close</a>
+    </div>
+  </div>
+</div>
+-->
+<div class="container">
+  <div class="device-options clearfix">
+    <div class="pull-left">
+      <h4 class="m-none">
+
+						<span ng-show="status.network.interfaces_default.state.wlan0">
+							WiFi IP: <strong>{{status.network.interfaces_default.state.wlan0}}</strong>
+						</span>
+						<span class="ml-10" ng-show="status.network.interfaces_default.state.eth0">
+							LAN IP: <strong>{{status.network.interfaces_default.state.eth0}}</strong>
+						</span>
+      </h4>
+    </div>
+    <hr class="visible-sm visible-xs" />
+    <div class="pull-right">
+      <a class="btn btn-default round" href="/#/info"><i class="fa fa-info mr-5 hidden-xs"></i>
+        Info</a>
+      <a class="btn btn-default round" ng-click="reboot()"><i class="fa fa-refresh mr-5 hidden-xs"></i>
+        Reboot Device</a>
+      <a class="btn btn-default round" ng-click="updateDevice()"><i class="fa fa-upload mr-5 hidden-xs"></i>
+        Update Device</a>
+      <a class="btn btn-default round" ng-click="resetNetwork()"><i class="fa fa-globe mr-5 hidden-xs"></i>
+        Reset Network</a>
+      <a class="btn btn-primary round" ng-click="factoryReset()"><i class="fa fa-exclamation-triangle mr-5 hidden-xs"></i>
+        Factory Reset</a>
+    </div>
+  </div>
+  <hr class="mb-40" />
+  <div class="row">
+
+    <div class="col-sm-4">
+       <div class="panel panel-default">
+            <div class="panel-body">
+              <div ng-controller="FormEthController">
+             <!-- <pre>form = {{eth | json}}</pre>
+              <pre>master = {{master | json}}</pre> -->
+            <div class="row mb-20">
+              <div class="col-sm-8">
+                <h3 class="m-none"><strong>Wired</strong> Network</h3>
+              </div>
+                <form  class="form-horizontal simple-form"    name="ethForm">
+                <hr class="visible-xs" />
+                <div class="col-sm-4 cleafix">
+                  <div class="clearfix pull-right">
+                    <div class="pull-left">
+                      <small class="text-primary mr-5">DHCP</small>
+                    </div>
+                    <label class="i-switch pull-left">
+                      <input type="checkbox"  ng-true-value="1" ng-false-value="-1"  name="dhcp" ng-model="eth.dhcp" >
+                      <i></i>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <hr class="visible-xs" />
+
+                <div ng-show="eth.dhcp == '-1'">
+                  <div class="form-horizontal">
+                    <div class="form-group" >
+                    <label  class="col-sm-4 control-label text-light">IP</label>
+                    <div class="col-sm-8">
+                      <input type="text" ng-model="eth.ip"  ipaddress class="form-control"  name="ip" ng-model-options="{ debounce: 500 }" placeholder="">
+                      <span ng-show="ethForm.ip.$invalid">Wrong ip address!</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-4 control-label text-light">Netmask</label>
+                    <div class="col-sm-8">
+                      <input type="text" ng-model="eth.netmask" netmask class="form-control" name="netmask" ng-model-options="{ debounce: 500 }" placeholder="" >
+                      <span ng-show="ethForm.$error.netmask">Wrong ip netmask!</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-4 control-label text-light">Gateway</label>
+                    <div class="col-sm-8">
+                      <input type="text" ng-model="eth.gateway" ipaddress name="gateway" class="form-control"  placeholder="" >
+                      <span ng-show="ethForm.gateway.$invalid">Wrong gateway  address!</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-4 control-label text-light">Dns</label>
+                    <div class="col-sm-8">
+                      <input type="text" ng-model="eth.dns1" ipaddress name="dns1" class="form-control"  placeholder="" >
+                      <span ng-show="ethForm.dns1.$invalid">Wrong dns  address!</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  <label  class="col-sm-4 control-label text-light hidden-xs">&nbsp;</label>
+                  <div class="col-sm-8">
+                    <input class="btn btn-default" type="submit" ng-click="reset()" value="reset" />
+                  <input class="btn btn-primary ml-10" type="submit" ng-click="update(eth)" value="Save" />
+                  </div>
+
+              </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-sm-4">
+      <!-- <hr class="visible-xs" /> -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div ng-show="status.network.wifiNetworks.length">
+            <div class="row mb-20">
+              <div class="col-sm-8">
+                <h3 class="m-none"><strong>Wireless</strong> Network</h3>
+              </div>
+              <!-- <hr class="visible-xs" /> -->
+              <!--  <div class="col-sm-4 cleafix">
+                  <div class="clearfix pull-right">
+                    <div class="pull-left">
+                      <small class="text-muted mr-5">Disabled</small>
+                    </div>
+                    <label class="i-switch pull-left">
+                      <input type="checkbox">
+                      <i></i>
+                    </label>
+                  </div>
+                </div>-->
+            </div>
+            <hr class="visible-xs" />
+
+            <div ng-controller="FormWifiController">
+              <!-- <pre>form = {{wlan | json}}</pre>
+               <pre>master = {{master | json}}</pre>-->
+              <form  class="form-horizontal simple-form"    name="wlanForm">
+
+
+
+                <div  class="form-group">
+                  <label class="col-sm-4 control-label text-light">Wireless </label>
+                  <div class="col-sm-8">
+                    <div class="btn-group text-left block">
+
+
+
+                      <select   class="form-control" ng-model="wlan.wifiname"><option ng-repeat="wifi in status.network.wifiNetworks">{{wifi.name}}</option></select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label  class="col-sm-4 control-label text-light">Password</label>
+                  <div class="col-sm-8">
+                    <input type="password" ng-model="wlan.pass" class="form-control"  placeholder="" >
+                  </div>
+                </div>
+
+                <div class="form-group" ng-show="wlan.wifiname">
+                  <label  class="col-sm-4 control-label text-light hidden-xs">&nbsp;</label>
+                  <div class="col-sm-8">
+                    <input class="btn btn-default" type="submit" ng-click="reset()" value="reset" />
+                  <input class="btn btn-primary ml-10" type="submit" ng-click="update(wlan)" value="Save" />
+                  </div>
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+     <!--  <hr class="visible-xs" /> -->
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div ng-if="online==2">
+          <h3 class="m-none mb-20">Your <strong>Account</strong></h3>
+          <p>Coonect device with Your meven.it account.</p>
+          <a class="btn btn-primary" href="/#/connect"><i class="icon-user mr-5"></i>Connect Your account</a>
+        </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content text-center">
+     <small class="text-muted block">
+        ©2015 <strong>MEVEN</strong>.IT
+      </small>
+   <!--  <div class="pull-right">
+      <a class="btn btn-default" href="#"><i class="fa fa-close mr-5" ></i>CANCEL</a><a class="btn btn-primary ml-10" href="#"><i class="fa fa-check mr-5"></i>SAVE</a>
+    </div> -->
+  </div>
+</footer>
+
+
