@@ -135,6 +135,7 @@ class StatusRepository {
 
         $connected =1;
         if ($this->deviceRepo->getOnline()) {
+            //dd("mother fucker");
             ///We are online but may not be paired//
             $connected=2;
             if ($surl = $this->_getSlideShowUrl()) {
