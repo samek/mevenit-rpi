@@ -196,9 +196,10 @@
                   <div class="col-sm-8">
                     <div class="btn-group text-left block">
 
-
-
-                      <select   class="form-control" ng-model="wlan.wifiname"><option ng-repeat="wifi in status.network.wifiNetworks">{{wifi.name}}</option></select>
+			<div ng-repeat="wifi in	status.network.wifiNetworks">
+				<input type="radio" name="wifi" ng-model="wlan.wifiname" value="{{wifi.name}}">: {{wifi.name}}<br>
+			</div>
+<!--                      <select   class="form-control" ng-model="wlan.wifiname"><option ng-repeat="wifi in status.network.wifiNetworks">{{wifi.name}}</option></select>  -->
                     </div>
                   </div>
                 </div>
@@ -215,7 +216,7 @@
                     <input class="btn btn-default" type="submit" ng-click="reset()" value="reset" />
                   <input class="btn btn-primary ml-10" type="submit" ng-click="update(wlan)" value="Save" />
                   </div>
-
+                  
                 </div>
 
               </form>
