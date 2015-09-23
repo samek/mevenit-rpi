@@ -32,7 +32,7 @@ class update extends Job implements SelfHandling,ShouldQueue
         echo "Updating device: ";
         //If this is not called then it loops for ever...
         $this->delete();
-        shell_exec("/var/www-test/shell/update.sh /var/www-test/");
+        shell_exec("/var/www/shell/update.sh /var/www/");
         echo "..... Should be done";
     }
 }
