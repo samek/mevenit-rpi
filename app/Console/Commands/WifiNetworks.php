@@ -63,7 +63,13 @@ class WifiNetworks extends Command
             if (stristr($line,"Cell ")) {
                 if ($x>=0) {
                     //We need to save it//
-                    $output[$x]=$iwo;
+                    $FOUND_SAVED=-1;
+                    foreach ($output as $saved) {
+                      if ($saved->name==$iwo->name)
+                        $FOUND_SAVED=1;
+                    }
+                    if ($FOUND_SAVED==-1)
+                      $output[]=$iwo;
                 }
                 $x++;
                 $iwo = new ifw();
@@ -100,7 +106,7 @@ class WifiNetworks extends Command
                 }
             }
         }
-        $output[$x]=$iwo;
+        $output[]=$iwo;
         $json = json_encode($output);
 
 
