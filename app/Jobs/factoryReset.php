@@ -35,13 +35,20 @@ class factoryReset extends Job implements SelfHandling, ShouldQueue
 
         //Reset networks files//
         $ifHelper = new InterfacesHelper();
+
         $ifHelper->reset();
+
         //Delete Database//
-        \Artisan::call('migrate:refresh');
+	$this->delete();
+
+        shell_exec("/usr/bin/supervisorctl stop laravel_wifi");
+        sleep(1);
+        
+        \Artisan::call('migrate:refresh',['--force' => true, '-n' => true]);
+
+//        \Artisan::call('migrate:refresh',['--force' => true, '-n' => true]);
+
         //Reboot
-        $this->delete();
-
         shell_exec("/sbin/reboot");
-
     }
 }
