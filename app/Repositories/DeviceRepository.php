@@ -136,6 +136,19 @@ class DeviceRepository {
         $md5sum->setFile("/etc/wpa_supplicant/wpa_supplicant.conf")->update();
         return true;
     }
+    
+    private function isCheckDataOk($checkData) {
+        if (!$checkData)
+            return false;
+            
+        if ($checkData["code"] == 200)
+            return true;
+            
+        if ($checkData["errorNb"] == 300)
+            return true;
+            
+        return false;
+    }
 
     /**
      * @return string
@@ -158,7 +171,8 @@ class DeviceRepository {
         
         try {
 
-            $checkData = file_get_contents($deviceCheckUrl->value);
+            $context = stream_context_create(["http" => ["ignore_errors" => true]]);
+            $checkData = file_get_contents($deviceCheckUrl->value, false, $context);
             $checkData = json_decode($checkData,1);
 
         } catch (\Exception $e) {
@@ -167,12 +181,11 @@ class DeviceRepository {
                     
         }
         
+        if (!$this->isCheckDataOk($checkData)) {
         
-        if (!$checkData || ((int)$checkData['code'] !== 200)) {
             $this->settingsRepo->insertSettings(["slideshowUrl" => "0"]);
-
-dd($this->settingsRepo->get('slideshowUrl'), "aaaa");
             return "/#/jump";
+        
         }
             
         return $slideUrl->value;
