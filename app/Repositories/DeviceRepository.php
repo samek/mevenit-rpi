@@ -144,13 +144,39 @@ class DeviceRepository {
         $alive = new pingHelper();
         $slideUrl = $this->settingsRepo->get('slideshowUrl');
 
+        //return "/#/connect";
+
         if (!$alive->isOnline())
             return "/#/configure-device";
         
-        if ($slideUrl !== null)
-            return $slideUrl->value;
+        if (($slideUrl === null) || (!$slideUrl->value))
+            return "/#/connect";
 
-        return "/#/connect";
+        $deviceCheckUrl = $this->settingsRepo->get('apiUrl');
+
+        $checkData = '';
+        
+        try {
+
+            $checkData = file_get_contents($deviceCheckUrl->value);
+            $checkData = json_decode($checkData,1);
+
+        } catch (\Exception $e) {
+
+            $checkData = null;
+                    
+        }
+        
+        
+        if (!$checkData || ((int)$checkData['code'] !== 200)) {
+            $this->settingsRepo->insertSettings(["slideshowUrl" => "0"]);
+
+dd($this->settingsRepo->get('slideshowUrl'), "aaaa");
+            return "/#/jump";
+        }
+            
+        return $slideUrl->value;
+
     }
 
 

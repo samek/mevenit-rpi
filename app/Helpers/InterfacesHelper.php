@@ -61,27 +61,27 @@ class InterfacesHelper {
 
     private function resetWpa() {
         copy($this->wpa,"/etc/wpa_supplicant/wpa_supplicant.conf");
+	$this->stopHotspot();
     }
 
     private function resetInterFaces() {
         copy($this->interfaces,"/etc/network/interfaces");
     }
 
+    private function stopHotspot() {
+	shell_exec("/bin/systemctl stop isc-dhcp-server");
+	shell_exec("/bin/systemctl stop hostapd");
+    }
 
     public function writeWpa($data) {
         file_put_contents("/etc/wpa_supplicant/wpa_supplicant.conf",$data);
-
-
+	$this->stopHotspot();
     }
 
     public function writeInterFaces($data) {
         file_put_contents("/etc/network/interfaces",$data);
 
     }
-
-
-
-
 
     ///You better be root// (should be called from queue)
     public function ifRestart($iface) {
