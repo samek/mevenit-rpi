@@ -34,6 +34,11 @@ var MevenBoxApp = angular
         controller: 'ConnectCtrl',
         controllerAs: 'connect'
       })
+      .when('/configure-device', {
+        templateUrl: '../views/configure-device.html',
+        controller: 'ConfigureDeviceCtrl',
+        controllerAs: 'configuredevice'
+      })
       .when('/loading', {
         templateUrl: '../views/loading.html',
         controller: 'LoadingCtrl',

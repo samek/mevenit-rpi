@@ -272,6 +272,14 @@ mevenBoxControllers.controller('InfoCtrl', ['$scope', '$http','$interval','$wind
 
 
 
+mevenBoxControllers.controller('ConfigureDeviceCtrl', ['$scope', '$http','$interval','$window',
+    function($scope, $http,$interval,$window) {
+    }
+  ]
+);
+
+
+
 mevenBoxControllers.controller('LoadingCtrl', ['$scope', '$http','$interval','$window',
     function($scope, $http,$interval,$window) {
 

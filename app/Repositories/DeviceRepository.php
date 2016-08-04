@@ -144,18 +144,13 @@ class DeviceRepository {
         $alive = new pingHelper();
         $slideUrl = $this->settingsRepo->get('slideshowUrl');
 
-        //dd($slideUrl);
-        if ($alive->isOnline() and ($slideUrl!=null)) {
+        if (!$alive->isOnline())
+            return "/#/configure-device";
+        
+        if ($slideUrl !== null)
             return $slideUrl->value;
-        } else {
-            return "/";
-            /*$this->settingsRepo->create(array(
-                'key'=>'slideshowUrl',
-                'value'=>'http://google.com'
-            ));*/
-        }
 
-
+        return "/#/connect";
     }
 
 
