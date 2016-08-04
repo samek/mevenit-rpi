@@ -184,7 +184,7 @@ class DeviceRepository {
         if (!$this->isCheckDataOk($checkData)) {
         
             $this->settingsRepo->insertSettings(["slideshowUrl" => "0"]);
-            return "/#/jump";
+            return "/#/connect";
         
         }
             
