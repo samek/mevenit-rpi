@@ -171,7 +171,7 @@ class InterfacesHelper {
     }
 
     private function _createWpaSupplicantPass($ssid,$pass) {
-        return shell_exec("/usr/bin/wpa_passphrase ".$ssid." '".$pass."'");
+        return shell_exec("/usr/bin/wpa_passphrase '".$ssid."' '".$pass."'");
     }
 
     private function _createWpaSupplicantOpen($ssid) {
