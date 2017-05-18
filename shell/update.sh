@@ -16,7 +16,7 @@ else
         /usr/bin/php artisan  migrate:refresh -n --force
 
     fi;
-    /usr/bin/php ./artisan migrate
+    /usr/bin/php ./artisan --force migrate
     /usr/bin/php ./artisan optimize
     /usr/bin/php ./artisan queue:restart
 fi;
