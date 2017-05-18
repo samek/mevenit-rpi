@@ -19,4 +19,6 @@ else
     /usr/bin/php ./artisan --force migrate
     /usr/bin/php ./artisan optimize
     /usr/bin/php ./artisan queue:restart
+    chmod 777 storage/database.sqlite
+    rm  storage/logs/*
 fi;
